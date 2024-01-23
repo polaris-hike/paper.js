@@ -145,6 +145,13 @@ new function() {
             radial = type === 'radialgradient',
             gradient;
         if (id) {
+            if(!definitions[id]) {
+				const preNode = node?.ownerSVGElement?.getElementById(id);
+				if(preNode) {
+					importGradient(preNode,type);
+				}
+			}
+
             // Gradients are always wrapped in a Color object, so get the
             // gradient object from there.
             // TODO: Handle exception if there is no definition for this id.

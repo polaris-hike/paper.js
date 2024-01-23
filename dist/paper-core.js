@@ -15166,6 +15166,13 @@ new function() {
 			radial = type === 'radialgradient',
 			gradient;
 		if (id) {
+			if(!definitions[id]) {
+				const preNode = node?.ownerSVGElement?.getElementById(id);
+				if(preNode) {
+					importGradient(preNode,type);
+				}
+			}
+			
 			gradient = definitions[id].getGradient();
 			if (gradient._radial ^ radial) {
 				gradient = gradient.clone();
